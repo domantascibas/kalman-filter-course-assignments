@@ -8,14 +8,22 @@ options['CONSTANT_SPEED'] = True
 
 class KalmanFilterToy:
     def __init__(self):
-        self.v = 0
-        self.prev_x = 0
-        self.prev_t = 0
+      self.v = 0
+      self.prev_x = 0
+      self.prev_t = 0
     def predict(self,t):
-        prediction = 0
-        return prediction
+      # returns the predicted value of x
+      dt = t - self.prev_t
+      # prediction = 0
+      prediction = self.prev_x + (self.v * dt)
+      return prediction
     def measure_and_update(self,x,t):
-        return
+      # update the value of v
+      measured_v = (x - self.prev_x) / (t - self.prev_t)
+      self.v = measured_v
+      self.prev_x = x
+      self.prev_t = t
+      return
 
 
 sim_run(options,KalmanFilterToy)
