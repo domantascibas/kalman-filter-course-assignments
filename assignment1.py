@@ -4,7 +4,7 @@ from sim.sim1d import sim_run
 # Simulator options.
 options = {}
 options['FIG_SIZE'] = [8,8]
-options['CONSTANT_SPEED'] = True
+options['CONSTANT_SPEED'] = False
 
 class KalmanFilterToy:
     def __init__(self):
@@ -20,7 +20,8 @@ class KalmanFilterToy:
     def measure_and_update(self,x,t):
       # update the value of v
       measured_v = (x - self.prev_x) / (t - self.prev_t)
-      self.v = measured_v
+      self.v += 0.65 * (measured_v - self.v)
+
       self.prev_x = x
       self.prev_t = t
       return
