@@ -37,8 +37,8 @@ class KalmanFilter:
                             [0., 1, 0., 0.]])
 
         # Measurement Uncertainty
-        self.R = np.matrix([[0.1, 0.],
-                            [0., 0.1]])
+        self.R = np.matrix([[5, 0.],
+                            [0., 5]])
 
         # Identity Matrix
         self.I = np.matrix([[1., 0., 0., 0.],
