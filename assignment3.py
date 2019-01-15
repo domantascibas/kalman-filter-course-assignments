@@ -21,10 +21,10 @@ class KalmanFilter:
                             [0.]])
 
         # Uncertainity Matrix
-        self.P = np.matrix([[1000, 0., 0., 0.],
-                            [0., 1000, 0., 0.],
-                            [0., 0., 1000, 0.],
-                            [0., 0., 0., 1000]])
+        self.P = np.matrix([[100, 0., 0., 0.],
+                            [0., 100, 0., 0.],
+                            [0., 0., 100, 0.],
+                            [0., 0., 0., 100]])
 
         # Next State Function
         self.F = np.matrix([[1, 0., 1, 0.],
