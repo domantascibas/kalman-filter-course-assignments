@@ -4,7 +4,7 @@ from sim.sim1d import sim_run
 # Simulator options.
 options = {}
 options['FIG_SIZE'] = [8,8]
-options['CONSTANT_SPEED'] = True
+options['CONSTANT_SPEED'] = False
 
 class KalmanFilter:
     def __init__(self):
@@ -51,6 +51,12 @@ class KalmanFilter:
 
         self.x = self.x + (K * y)
         self.P = (self.I - (K * self.H)) * self.P
+
+        # reduce the certainty so that the filter is less certain about what the final values are
+        self.P[0,0] += 0.1
+        self.P[1,1] += 0.1
+
+        # can increase filter responsiveness by increasing the P values, o R values
 
         self.v = self.x[1,0]
         self.prev_time = t
