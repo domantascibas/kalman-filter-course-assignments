@@ -16,21 +16,29 @@ class KalmanFilter:
     def __init__(self):
         # Initial State
         self.x = np.matrix([[0.],
+                            [0.],
+                            [0.],
                             [0.]])
 
         # Uncertainity Matrix
-        self.P = np.matrix([[0., 0.],
-                            [0., 0.]])
+        self.P = np.matrix([[0., 0., 0., 0.],
+                            [0., 0., 0., 0.],
+                            [0., 0., 0., 0.],
+                            [0., 0., 0., 0.]])
 
         # Next State Function
-        self.F = np.matrix([[0., 0.],
-                            [0., 0.]])
+        self.F = np.matrix([[0., 0., 0., 0.],
+                            [0., 0., 0., 0.]
+                            [0., 0., 0., 0.]
+                            [0., 0., 0., 0.]])
 
         # Measurement Function
-        self.H = np.matrix([[0., 0.]])
+        self.H = np.matrix([[0., 0., 0., 0.],
+                            [0., 0., 0., 0.]])
 
         # Measurement Uncertainty
-        self.R = np.matrix([[0.0]])
+        self.R = np.matrix([[0., 0.],
+                            [0., 0.]])
 
         # Identity Matrix
         self.I = np.matrix([[1., 0., 0., 0.],
